@@ -3,6 +3,7 @@ const session = require('express-session');
 const path = require('path');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const {Post} = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,8 +24,13 @@ const sess = {
   app.use(express.urlencoded({ extended: false}));
 
   app.use(express.static(path.join(__dirname, "public")));
-
-  app.listen(PORT, () => {
-      console.log('listening on 3001')
-      sequelize.sync({ force: false})
+  
+  sequelize.sync({ force: true }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
   });
+
+  app.post("/post", async (req, res) => {
+    await Post.findAll();
+  })
+  
+
