@@ -3,34 +3,44 @@ const session = require('express-session');
 const path = require('path');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const {Post} = require("./models");
+const { Post } = require("./models");
+const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const hbs = exphbs.create({ helpers });
+
 const sess = {
-    secret: 'Super secret secret',
-    cookie: {},
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize
-    })
-  };
-
-  app.use(session(sess));
-
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: false}));
-
-  app.use(express.static(path.join(__dirname, "public")));
-  
-  sequelize.sync({ force: true }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
-  });
-
-  app.post("/post", async (req, res) => {
-    await Post.findAll();
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
   })
-  
+};
+
+app.use(session(sess));
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(routes);
+
+sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});
+
+// app.post("/post", async (req, res) => {
+//   await Post.findAll();
+// })
+
 
