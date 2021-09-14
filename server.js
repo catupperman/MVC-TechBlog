@@ -1,4 +1,5 @@
 const express = require('express');
+const routes = require('./controllers')
 const session = require('express-session');
 const path = require('path');
 const sequelize = require('./config/connection');
@@ -39,8 +40,6 @@ sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-// app.post("/post", async (req, res) => {
-//   await Post.findAll();
-// })
+
 
 
