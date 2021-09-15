@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
-const { truncate } = require('../models/User');
-const auth = require('../utils/auth');
+//const { truncate } = require('../models/User');
+//const helpers= require('../utils/helpers');
 const { post } = require('./api');
 
 
@@ -11,8 +11,12 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'github']
                 },
+                {
+                    model: Comment,
+                    attributes: ['body']
+                }
             ],
         });
         const everyPost = postData.map((post) =>
@@ -36,7 +40,7 @@ router.get('/signup', async (req, res) =>{
     if (req.session.logged_in){
         res.redirect('/');
     } else {
-        res.render('sign_up');
+        res.render('create_account');
     }
 });
 
