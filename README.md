@@ -10,8 +10,8 @@
 
 
 ## Description
-> This project was to edit broken exisiting code, to create a data base back end for an E-Commerce site. This was built using the node tools ```mysql2``` ``` express```  ```dotenv``` and ```sequelize```.
-[Video](https://drive.google.com/file/d/1TUHW5juOA7P6-5NkgP2Ld-G21ohv5UAL/view)
+> This project was a build from scratch full stack application for a commenting webpage, for web developers to leave helpful comments to each other. This was the first full stack application I've ever built.  There is still more work to be done, and I plan to take the time to fix what needs help.  This project was mostly a struggle for me since my home was flooded during this project week. I am impressed with how much I built out but I am aware it is not fully complete. 
+[HerokuWebPage]()
 
 ## Installation
 > I pulled the [npm](https://www.npmjs.com/) package, aka ```package.json```, entered ```npm install``` , and then used the ```require``` method to direct the routes for each of the items within the directory.  
@@ -23,11 +23,13 @@
 > * [Sequelize](https://www.npmjs.com/package/sequelize)
 > * [Shields IO](https://shields.io/category/license) 
 > * [Open Source Initiative](https://opensource.org/licenses/BSD-3-Clause) 
+> * [Handlebars](https://handlebarsjs.com/)
+> * [Heroku](https://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide)
 ## Contributions
-> I would like to thank my teacher, Dan Gross for throughly going through and debugging the mini project I worked on before starting this assginment.  This gave me a better insight of how to approach debugging the presented code in this assignment.
+> I would like to thank my tutor for helping me through this, my student success manager for being so helpful to get me the help I needed to work on this project. 
 ## Testing
-> To test the data base I used [Insomnia](https://insomnia.rest/) to run the different, GET, POST, PUT, and DELETE methods.
->![Test](images/insominiaecommerce.gif)
+> To test the data base I used [Insomnia](https://insomnia.rest/) to run the different, GET and POST methods.
+
 ## License
 ![BSD](https://img.shields.io/badge/License-GPL-blue)
 Copyright (C) 2021 catupperman
