@@ -1,7 +1,5 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
-//const { truncate } = require('../models/User');
-//const helpers= require('../utils/helpers');
 const { post } = require('./api');
 
 
@@ -32,7 +30,7 @@ router.get('/login', async (req, res) => {
     if (req.session.logged_in){
         res.redirect('/');
     } else {
-        res.render('sign_up');
+        res.render('login');
     }
 });
 
