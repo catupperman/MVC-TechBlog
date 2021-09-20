@@ -8,6 +8,11 @@ router.get('/', withAuth, async (req, res) =>{
             where: {
                 user_id: req.session.user_id
             }
+        });
+        const post = postData.map((post) => post.get({plain: true}));
+
+        res.render('posts', {
+            
         })
     } catch (err) {
         console.log(err);
@@ -15,3 +20,4 @@ router.get('/', withAuth, async (req, res) =>{
 });
 
 module.exports = router;
+

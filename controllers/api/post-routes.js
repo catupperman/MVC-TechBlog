@@ -26,7 +26,11 @@ router.put('/:id', async (req, res) =>{
                 id: req.params.id
             }
         })
-        res.status(205).json(postDataId);
+        if (postDataId > 0) {
+            res.status(200).end();
+          } else {
+            res.status(404).end();
+          }
     } catch{
         console.log(err);
         res.status(500);
